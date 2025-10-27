@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map Test</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Leaflet Map Test</h1>
+        <div id="map"></div>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <script>
+        // Simple script to initialize a map with a marker
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded");
+            
+            // Default coordinates (New York City)
+            const lat = 40.7128;
+            const lng = -74.0060;
+            
+            console.log("Initializing map with coordinates:", lat, lng);
+            
+            // Get map container
+            const mapElement = document.getElementById('map');
+            console.log("Map element found:", mapElement);
+            
+            // Initialize map
+            try {
+                const map = L.map(mapElement).setView([lat, lng], 13);
+                
+                // Add tile layer
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    maxZoom: 19
+                }).addTo(map);
+                
+                // Add marker
+                const marker = L.marker([lat, lng]).addTo(map);
+                marker.bindPopup("<b>Test Location</b><br>This is a test marker.").openPopup();
+                
+                console.log("Map initialized successfully");
+                
+                // Force map to resize after a short delay
+                setTimeout(() => {
+                    map.invalidateSize();
+                    console.log("Map size invalidated");
+                }, 200);
+            } catch (e) {
+                console.error("Error initializing map:", e);
+            }
+        });
+    </script>
+</body>
+</html>

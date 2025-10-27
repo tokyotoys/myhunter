@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Tracker</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Location Tracker</h1>
+            <p>This website tracks your location using IP-based geolocation and stores it in cookies.</p>
+        </header>
+
+        <main>
+            <section class="location-card">
+                <h2>Your Location</h2>
+                <div id="location-data">
+                    <p>Loading your location data...</p>
+                </div>
+                <div class="button-group">
+                    <button id="refresh-location" class="btn primary">Refresh Location</button>
+                    <button id="clear-location" class="btn secondary">Clear Location Cookie</button>
+                </div>
+            </section>
+
+            <section class="map-container">
+                <h2>Location Map</h2>
+                <div id="map">
+                    <p>Map will appear here once location is loaded...</p>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <h2>How It Works</h2>
+                <p>This website uses IP-based geolocation to determine your location, including street-level information when available. The data is stored in a cookie on your device for 30 days.</p>
+                <p>The following information is collected:</p>
+                <ul>
+                    <li>IP Address</li>
+                    <li>City</li>
+                    <li>Region</li>
+                    <li>Country</li>
+                    <li>Postal Code</li>
+                    <li>Geographic Coordinates</li>
+                    <li>Street Information (when available)</li>
+                </ul>
+                <p>You can clear this information at any time by clicking the "Clear Location Cookie" button.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Location Tracker. All rights reserved.</p>
+            <p>This is a demonstration website. Your location data is stored locally in cookies and is not sent to any third-party servers.</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
